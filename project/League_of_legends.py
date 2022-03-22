@@ -28,23 +28,21 @@ def get_list_of_champions_beginning():
     see_also_recup = see_also.get_text()
     data['More'] = see_also_recup
 
-    content_champions = see_also.find_next_sibling().get_text().replace('\n', ' ')
-    data['Description'] = content_champions
+    content_champions = see_also.find_next_sibling()
+    content_champions_recup = content_champions.get_text().replace('\n', ' ')
+    data['Description'] = content_champions_recup
 
-    toc = soup.find(class_="toc")
-    #title_first_board = toc.findChild("h2").get_text()
-
-    #1er tableau -> list toc
+    #1er tableau -> class toc
     first_board = content_champions.find_next_sibling()
 
     #titre du 1er tableau
-    title_first_board = board.find_next_sibling().get_text()
+    title_first_board = first_board.findChild(class_="toctitle")
+    title_first_board_recup = title_first_board.h2.get_text()
+    data['Title_first_board'] = title_first_board_recup
 
-    #title_first_board = soup.find(class_="toctitle").h2.text
-    data['Title_first_board'] = title_first_board
-
-    #first_board = toc.ul.text.replace('\n', ' ')
-    #data['first_board'] = first_board
+    #données du tableau
+    list_board = title_first_board.find_next_sibling().text.replace('\n', ' ')
+    data['list_board'] = list_board
 
     return data
 
