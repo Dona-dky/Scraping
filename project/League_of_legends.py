@@ -58,11 +58,13 @@ def get_list_of_champions_beginning():
     table = h2_2_tab.find_next_sibling().find('tbody')
     rows = table.find_all('tr')
     for row in rows:
-        #if len(row) > 1:
+        # if len(row) > 1:
         columns = row.find_all('th')
         cells = row.find_all('td')
-        print(columns)
-        print(cells)
+        data['columns'] = columns
+        data['cells'] = cells
+        #print(columns)
+        #print(cells)
 
         # for rows in table_body('tr'):
         # if len(rows) > 1:
@@ -77,3 +79,7 @@ def get_list_of_champions_beginning():
 
 
 print(get_list_of_champions_beginning())
+
+# Data of display
+#print(monh1)
+#print()
